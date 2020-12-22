@@ -25,7 +25,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C# REF就是高斯核函数#from xgboost import XGBClassifier
+from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C# REF is Gaussian function#from xgboost import XGBClassifier
 from sklearn.gaussian_process import GaussianProcessClassifier
 
 
@@ -83,9 +83,9 @@ clf_knn = KNeighborsClassifier()
 clf_knn.fit(X_train,y_train)
 y_pred_knn = clf_knn.predict(X_test)
 
-clf_nb = GaussianNB()   # 使用默认配置初始化朴素贝叶斯
-clf_nb.fit(X_train,y_train)    # 利用训练数据对模型参数进行估计
-y_pred_nb = clf_nb.predict(X_test)     # 对参数进行预测
+clf_nb = GaussianNB()   # use the default setting to initialize the naive bayes
+clf_nb.fit(X_train,y_train)    # use training data to estimate the model parameters
+y_pred_nb = clf_nb.predict(X_test)     # predicts the parameters
 #clf_polyreg = PolynomialLogisticRegression(degree=20,C=0.1,penalty='l1')
 #clf_polyreg.fit(X_train,y_train)
 #y_pred_polyreg=clf_polyreg.predict(X_test)
@@ -282,8 +282,8 @@ plt.legend(loc='lower right')
 # plt.plot([0, 1], [0, 1], 'r--')
 plt.xlim([-0.1, 1.1])
 plt.ylim([-0.1, 1.1])
-plt.xlabel('False Positive Rate') #横坐标是fpr
-plt.ylabel('True Positive Rate')  #纵坐标是tpr
+plt.xlabel('False Positive Rate') #the horizontal axis is fpr
+plt.ylabel('True Positive Rate')  #the vertical axis is tpr
 plt.title('ROC curve')
 plt.savefig(r'/Users/yoland/PycharmProjects/untitled4/AUC_compared.png')
 plt.show()
