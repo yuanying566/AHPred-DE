@@ -230,8 +230,8 @@ labels = [ 'model 1 AUC = %0.3f'% roc_auc1 , 'model 2 AUC = %0.3f'% roc_auc2 , '
 plt.figure()
 plt.xlim([-0.1, 1.1])
 plt.ylim([-0.1, 1.1])
-plt.xlabel('False Positive Rate') #横坐标是fpr
-plt.ylabel('True Positive Rate')  #纵坐标是tpr
+plt.xlabel('False Positive Rate') #the horizontal axis is fpr
+plt.ylabel('True Positive Rate')  #the vertical axis is tpr
 plt.title('ROC curve')
 #auc_total = np.loadtxt('AUC_batch.txt')
 #for i in range(np.shape(auc_total)[1]):
