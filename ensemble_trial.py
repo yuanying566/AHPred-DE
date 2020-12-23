@@ -82,7 +82,7 @@ def log_loss_func(weights):
 
     return log_loss(test_y, final_prediction)
 
-starting_values = [0.5] * len(predictions_nb)
+starting_values = [1/9] * len(predictions_nb)
 print(starting_values)
 # adding constraints  and a different solver as suggested by user 16universe
 # https://kaggle2.blob.core.windows.net/forum-message-attachments/75655/2393/otto%20model%20weights.pdf?sv=2012-02-12&se=2015-05-03T21%3A22%3A17Z&sr=b&sp=r&sig=rkeA7EJC%2BiQ%2FJ%2BcMpcA4lYQLFh6ubNqs2XAkGtFsAv0%3D
@@ -133,39 +133,7 @@ print(predictions.shape)
 print(len(predictions))
 
 
-predictions=np.vstack((predictions,y_pred_ert))
-#predictions=np.vstack((predictions,y_pred_knn))
-#predictions=np.vstack((predictions,y_pred_gb))
-predictions=np.vstack((predictions,y_pred_ada))
 
-#predictions=np.vstack((predictions,y_pred_nb))
-#predictions=np.vstack((predictions,y_pred_gp))
-predictions=np.vstack((predictions,y_pred_log))
-
-
-def log_loss_func(weights):
-    ''' scipy minimize will pass the weights as a numpy array '''
-    final_prediction = 0
-    for weight, prediction in zip(weights, predictions):
-        final_prediction += weight * prediction
-
-    return log_loss(test_y, final_prediction)
-
-
-
-# the algorithms need a starting value, right not we chose 0.5 for all weights
-# its better to choose many random starting points and run minimize a few times
-#starting_values = [0.5] * len(predictions)
-starting_values = [0.5] * len(predictions)
-print(starting_values)
-# adding constraints  and a different solver as suggested by user 16universe
-# https://kaggle2.blob.core.windows.net/forum-message-attachments/75655/2393/otto%20model%20weights.pdf?sv=2012-02-12&se=2015-05-03T21%3A22%3A17Z&sr=b&sp=r&sig=rkeA7EJC%2BiQ%2FJ%2BcMpcA4lYQLFh6ubNqs2XAkGtFsAv0%3D
-cons = ({'type': 'eq', 'fun': lambda w: 1 - sum(w)})
-# our weights are bound between 0 and 1
-#bounds = [(0, 1)] * len(predictions)
-bounds = [(0, 1)] * len(predictions)
-
-res = minimize(log_loss_func, starting_values, method='SLSQP', bounds=bounds, constraints=cons)
 #print(res.shape)
 print('Ensamble Score: {best_score}'.format(best_score=res['fun']))
 print('Best Weights: {weights}'.format(weights=res['x']))
